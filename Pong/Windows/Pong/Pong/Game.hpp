@@ -19,6 +19,9 @@ class Game
     // System functions
     void sRender(void);
 
+
+    void spawnBall();
+
 public:
     void init(void);
     void run(void);

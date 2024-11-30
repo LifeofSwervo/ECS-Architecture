@@ -18,3 +18,15 @@ void Game::sRender(void)
     ClearBackground(RAYWHITE);
     EndDrawing();
 }
+
+void Game::spawnBall(void)
+{
+    // Create ball
+
+    // Give cTransform so it spawns in middle of screen
+
+    // Entity Dimensions
+
+    // Set game's ball variable to be this entity
+
+}

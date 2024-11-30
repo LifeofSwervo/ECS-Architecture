@@ -1,10 +1,6 @@
 #pragma once
 //  Entity.hpp
 #include "Common.hpp"
-#include <memory>
-#ifndef Entity_hpp
-#define Entity_hpp
-#include <stdio.h>
 
 class Entity
 {
@@ -19,11 +15,11 @@ class Entity
 
 public:
 
+    
+
     // Private Member access functions
     bool isActive() const;
     const size_t id() const;
     const std::string& tag() const;
     void destroy();
 };
-
-#endif /* Entity_hpp */

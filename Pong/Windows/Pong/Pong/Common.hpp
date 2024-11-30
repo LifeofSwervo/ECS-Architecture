@@ -10,3 +10,7 @@
 #include <algorithm>
 #include <map>
 #include <stdio.h>
+
+#include "Vec2.hpp"
+
+template <class T> using ptr = std::shared_ptr<T>;
