@@ -1,4 +1,7 @@
-﻿  EntityManager.cpp
+﻿  Entity.cpp
+  EntityManager.cpp
+  main.cpp
+  Game.cpp
   Vec2.cpp
   Generating Code...
   Pong.vcxproj -> C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\Windows\Pong\x64\Debug\Pong.exe

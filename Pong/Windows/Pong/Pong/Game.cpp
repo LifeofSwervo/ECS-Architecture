@@ -1,10 +1,20 @@
 //  Game.cpp
 #include "Game.hpp"
 
+/*
+// Import Game Config
+Game::Game(const std::string & config)
+{
+    init(config);
+}
+*/
+
 void Game::init(void)
 {
     InitWindow(1280, 720, "GW");
     SetTargetFPS(60);
+
+    //spawnBall();
 }
 
 void Game::run(void)

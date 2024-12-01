@@ -14,37 +14,37 @@ void EntityManager::update()
 
     removeDeadEntities(m_entities);
 
-    /*for (auto& [tag, entityVec] : m_entityMap)
+    for (auto& [tag, entityVec] : m_entityMap)
     {
         removeDeadEntities(entityVec);
-    }*/
+    }
 }
 
-void EntityManager::removeDeadEntities(EntityVec& vec)
+void EntityManager::removeDeadEntities(EntityVec & vec)
 {
     // Removes all dead entities from the input vector
     // This function is called by the update function
 }
 
-/*std::shared_ptr<Entity> EntityManager::addEntity(const std::string& tag)
+std::shared_ptr<Entity> EntityManager::addEntity(const std::string & tag)
 {
     // Adds enemies to the m_entitiesToAdd, then placed in the proper location in the update() function.
 
     // Create entity and shared pointer
-    //auto entity = std::shared_ptr<Entity>(new Entity(m_totalEntities++, tag));
+    auto entity = std::shared_ptr<Entity>(new Entity(m_totalEntities++, tag));
 
     // This line may need to be changed
-    //m_entitiesToAdd.push_back(entity);
+    m_entitiesToAdd.push_back(entity);
 
-    //return entity;
-}*/
+    return entity;
+}
 
 const EntityVec& EntityManager::getEntities()
 {
     return m_entities;
 }
 
-const EntityVec& EntityManager::getEntities(const std::string& tag)
+const EntityVec& EntityManager::getEntities(const std::string & tag)
 {
     // This is incorrect, correct it and return the correct vector from the map
     return m_entities;

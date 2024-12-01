@@ -8,10 +8,11 @@
 
 
 #include "Common.hpp"
-#include <stdio.h>
-
+#include "Entity.hpp"
+#include "EntityManager.hpp"
 class Game
 {
+    EntityManager m_entities;
     int m_currentFrame = 0;
 
 
