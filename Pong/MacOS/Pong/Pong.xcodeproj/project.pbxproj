@@ -281,6 +281,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = /opt/homebrew/Cellar/raylib/5.0/include;
 				LIBRARY_SEARCH_PATHS = /opt/homebrew/Cellar/raylib/5.0/lib;
+				OTHER_LDFLAGS = "-v";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "/Users/paulthomas/Desktop/Developer/GitHub/ECS-Architecture/Pong/MacOS/Pong/Pong";
 			};
@@ -292,6 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = /opt/homebrew/Cellar/raylib/5.0/include;
 				LIBRARY_SEARCH_PATHS = /opt/homebrew/Cellar/raylib/5.0/lib;
+				OTHER_LDFLAGS = "-v";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "/Users/paulthomas/Desktop/Developer/GitHub/ECS-Architecture/Pong/MacOS/Pong/Pong";
 			};

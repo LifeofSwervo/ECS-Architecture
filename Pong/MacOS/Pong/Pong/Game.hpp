@@ -13,6 +13,9 @@
 class Game
 {
     EntityManager m_entities;
+    
+    std::shared_ptr<Entity> m_ball;
+    
     int m_currentFrame = 0;
 
 
@@ -20,6 +23,7 @@ class Game
     // System functions
     void sRender(void);
 
+    // Spawn Entites 
 
     void spawnBall();
 
