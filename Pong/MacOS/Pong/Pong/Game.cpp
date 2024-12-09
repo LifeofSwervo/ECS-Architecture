@@ -19,6 +19,7 @@ void Game::init(void)
 
 void Game::run(void)
 {
+    m_entities.update();
     Game::sRender();
 }
 
@@ -26,6 +27,20 @@ void Game::sRender(void)
 {
     BeginDrawing();
     ClearBackground(RAYWHITE);
+    
+    // Iterate over all entities and draw only those with a shape
+    
+    for (const auto& entity : m_entities.getEntities())
+    {
+        if (entity->cShape)
+        {
+            entity->cShape->Draw();
+            std::cout << "working";
+            
+        }
+    }
+
+    
     EndDrawing();
 }
 
@@ -43,4 +58,6 @@ void Game::spawnBall(void)
     
     // Set game's ball variable to be this entity
     m_ball = entity;
+    
+    
 }
