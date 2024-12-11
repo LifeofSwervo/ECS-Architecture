@@ -21,7 +21,12 @@ class Game
 
 
     // System functions
-    void sRender(void);
+    void sMovement(void);       // System: Entity Position / Movement
+    void sUserInput(void);
+    void sLifespan(void);
+    void sRender(void);         // System: Render / Drawing
+    void sEnemySpawner(void);
+    void sCollision(void);
 
     // Spawn Entites 
 

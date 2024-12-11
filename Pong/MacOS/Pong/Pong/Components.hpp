@@ -2,17 +2,18 @@
 // Components.h
 #include "Common.hpp"
 
+
 class CTransform
 {
 public:
-    Vec2 pos = { 0.0, 0.0 }; // Center of object
-    Vec2 velocity = { 0.0, 0.0 };
+    Vector2 velocity;
     float angle = 0;
 
     // Constructor
-    CTransform(const Vec2& p, const Vec2& v, float a)
-        : pos(p), velocity(v), angle(a) {}
+    CTransform(const Vector2& v, float a)
+        : velocity(v), angle(a) {}
 };
+
 
 class CShape
 {
