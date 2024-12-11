@@ -36,6 +36,12 @@ void Game::sMovement(void)
     {
         if (entity->cShape)
         {
+            if (m_ballPauseTimer > 0.0f)
+            {
+                m_ballPauseTimer -= GetFrameTime();
+                return;
+            }
+            
             entity->cShape->center.x += entity->cTransform->velocity.x;
             entity->cShape->center.y += entity->cTransform->velocity.y;
         }
@@ -77,9 +83,9 @@ void Game::sCollision(void)
             {
                 // Reset ball functionality.
                 entity->cTransform->velocity.x *= -1;
-                
                 entity->cShape->center.x = GetScreenWidth() / 2;
                 entity->cShape->center.y = GetScreenHeight() / 2;
+                m_ballPauseTimer = 2.0f;
             };
         }
     }
