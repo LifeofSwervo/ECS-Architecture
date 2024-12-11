@@ -77,11 +77,9 @@ void Game::sCollision(void)
             {
                 // Reset ball functionality.
                 entity->cTransform->velocity.x *= -1;
-                float midScreenX = GetScreenWidth() / 2;
-                float midScreenY = GetScreenHeight() / 2;
                 
-                entity->cShape->center.x = midScreenX;
-                entity->cShape->center.y = midScreenY;
+                entity->cShape->center.x = GetScreenWidth() / 2;
+                entity->cShape->center.y = GetScreenHeight() / 2;
             };
         }
     }
@@ -92,16 +90,15 @@ void Game::sCollision(void)
 void Game::spawnBall(void)
 {
     const float BALL_SPEED = 5;
+    
     // Create ball
     auto entity = m_entities.addEntity("ball");
 
-    // cTransform is used to control the ball's velocity and angle. 
+    // cTransform is used to control the ball's velocity and angle.
     entity->cTransform = std::make_shared<CTransform>(Vector2{BALL_SPEED, BALL_SPEED}, 0.0f);
 
     // Entity Dimensions
     entity->cShape = std::make_shared<CShape>(Vector2{1280 / 2,720 / 2}, 32.0f, BLACK, BLACK, 4.0f);
-    
-
     
     // Set game's ball variable to be this entity
     m_ball = entity;

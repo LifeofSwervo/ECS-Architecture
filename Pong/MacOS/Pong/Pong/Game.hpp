@@ -17,6 +17,7 @@ class Game
     std::shared_ptr<Entity> m_ball;
     
     int m_currentFrame = 0;
+    float m_ballPauseTimer = 0.0f;
 
 
 
