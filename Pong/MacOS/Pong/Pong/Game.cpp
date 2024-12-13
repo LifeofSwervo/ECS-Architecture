@@ -15,6 +15,7 @@ void Game::init(void)
     SetTargetFPS(60);
 
     spawnBall();
+    spawnPlayer();
 }
 
 void Game::run(void)
@@ -22,6 +23,7 @@ void Game::run(void)
     m_entities.update();
     Game::sRender();
     Game::sMovement();
+    Game::sUserInput();
     Game::sCollision();
 }
 
@@ -32,7 +34,7 @@ void Game::run(void)
 void Game::sMovement(void)
 {
     // Ball movement
-    for (const auto& entity : m_entities.getEntities())
+    for (const auto& entity : m_entities.getEntities("ball"))
     {
         if (entity->cShape)
         {
@@ -48,6 +50,37 @@ void Game::sMovement(void)
     }
 }
 
+void Game::sUserInput()
+{
+   for (const auto& entity : m_entities.getEntities("player"))
+   {
+       Vector2 movement = {0, 0};
+       
+       // Movement handling (y-axis)
+       if (IsKeyDown(KEY_UP))
+       {
+           movement.y -= entity->cTransform->velocity.y;
+       }
+       if (IsKeyDown(KEY_DOWN))
+       {
+           movement.y += entity->cTransform->velocity.y;
+       }
+       
+       entity->cShape->center.y += movement.y;
+       
+       if (entity->cShape->center.y < 0)
+       {
+           entity->cShape->center.y = 0;
+       }
+       if (entity->cShape->center.y + entity->cShape->rectSize.y > GetScreenHeight())
+       {
+           entity->cShape->center.y = GetScreenHeight() - entity->cShape->rectSize.y;
+       }
+
+       
+   }
+};
+
 void Game::sRender(void)
 {
     BeginDrawing();
@@ -58,7 +91,14 @@ void Game::sRender(void)
     {
         if (entity->cShape)
         {
-            entity->cShape->Draw();
+            if (entity->tag() == "ball")
+            {
+                entity->cShape->DrawBall();
+            }
+            else if (entity->tag() == "player")
+            {
+                entity->cShape->DrawPaddle();
+            }
         }
     }
     EndDrawing();
@@ -104,10 +144,28 @@ void Game::spawnBall(void)
     entity->cTransform = std::make_shared<CTransform>(Vector2{BALL_SPEED, BALL_SPEED}, 0.0f);
 
     // Entity Dimensions
-    entity->cShape = std::make_shared<CShape>(Vector2{1280 / 2,720 / 2}, 32.0f, BLACK, BLACK, 4.0f);
+    entity->cShape = std::make_shared<CShape>(Vector2{1280 / 2,720 / 2}, 32.0f, BLACK);
     
     // Set game's ball variable to be this entity
     m_ball = entity;
-    
-    
-}
+};
+
+
+ void Game::spawnPlayer(void)
+ {
+     const float PLAYER_SPEED = 9;
+     
+     const Vector2 paddleSize = {20, 160};
+
+     
+     // Create Player
+     auto entity = m_entities.addEntity("player");
+     
+     //
+     entity->cTransform = std::make_shared<CTransform>(Vector2{PLAYER_SPEED, PLAYER_SPEED}, 0.0f);
+     
+     entity->cShape = std::make_shared<CShape>(Vector2{40, 720 / 2}, paddleSize, BLACK);
+     
+     m_player = entity;
+ };
+ 

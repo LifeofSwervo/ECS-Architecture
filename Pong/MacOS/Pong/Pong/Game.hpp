@@ -15,6 +15,8 @@ class Game
     EntityManager m_entities;
     
     std::shared_ptr<Entity> m_ball;
+    std::shared_ptr<Entity> m_player;
+    std::shared_ptr<Entity> m_enemy;
     
     int m_currentFrame = 0;
     float m_ballPauseTimer = 0.0f;
@@ -29,9 +31,9 @@ class Game
     void sEnemySpawner(void);
     void sCollision(void);
 
-    // Spawn Entites 
-
+    // Spawn Entites
     void spawnBall();
+    void spawnPlayer();
 
 public:
     void init(void);
