@@ -16,6 +16,7 @@ void Game::init(void)
 
     spawnBall();
     spawnPlayer();
+    spawnEnemy();
 }
 
 void Game::run(void)
@@ -48,6 +49,8 @@ void Game::sMovement(void)
             entity->cShape->center.y += entity->cTransform->velocity.y;
         }
     }
+    
+    // Enemy Movement
 }
 
 void Game::sUserInput()
@@ -99,6 +102,10 @@ void Game::sRender(void)
             {
                 entity->cShape->DrawPaddle();
             }
+            else if (entity->tag() == "enemy")
+            {
+                entity->cShape->DrawPaddle();
+            }
         }
     }
     EndDrawing();
@@ -109,6 +116,34 @@ void Game::sCollision(void)
     // Ball collision
     for (const auto& entity : m_entities.getEntities("ball"))
     {
+        
+        
+        if (CheckCollisionCircleRec(
+                m_ball->cShape->center,
+                m_ball->cShape->radius,
+                {
+                    m_player->cShape->center.x - m_player->cShape->rectSize.x / 2,
+                    m_player->cShape->center.y - m_player->cShape->rectSize.y / 2,
+                    m_player->cShape->rectSize.x,
+                    m_player->cShape->rectSize.y
+                }))
+        {
+            m_ball->cTransform->velocity.x *= -1;
+        };
+        
+        if (CheckCollisionCircleRec(
+                m_ball->cShape->center,
+                m_ball->cShape->radius,
+                {
+                    m_enemy->cShape->center.x - m_player->cShape->rectSize.x / 2,
+                    m_enemy->cShape->center.y - m_player->cShape->rectSize.y / 2,
+                    m_enemy->cShape->rectSize.x,
+                    m_enemy->cShape->rectSize.y
+                }))
+        {
+            m_ball->cTransform->velocity.x *= -1;
+        }
+        
         // Check for ball touching screen constraints
         if (entity->cShape && entity->cTransform)
         {
@@ -169,3 +204,22 @@ void Game::spawnBall(void)
      m_player = entity;
  };
  
+void Game::spawnEnemy(void)
+{
+    const float ENEMY_SPEED = 9;
+    const Vector2 PADDLE_SIZE = {20, 160};
+ 
+    // Create Enemy
+    auto entity = m_entities.addEntity("enemy");
+    
+    entity->cTransform = std::make_shared<CTransform>(Vector2{ENEMY_SPEED, ENEMY_SPEED}, 0.0f);
+    
+    entity->cShape = std::make_shared<CShape>(
+        Vector2{static_cast<float>(GetScreenWidth() - 40 - PADDLE_SIZE.x), 720 / 2},
+        PADDLE_SIZE,
+        BLACK
+    );
+    
+    m_enemy = entity;
+    
+}

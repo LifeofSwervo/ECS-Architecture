@@ -32,8 +32,9 @@ class Game
     void sCollision(void);
 
     // Spawn Entites
-    void spawnBall();
-    void spawnPlayer();
+    void spawnBall(void);
+    void spawnPlayer(void);
+    void spawnEnemy(void);
 
 public:
     void init(void);
