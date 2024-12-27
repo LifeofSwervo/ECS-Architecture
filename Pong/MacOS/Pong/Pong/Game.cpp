@@ -14,9 +14,7 @@ void Game::init(void)
     InitWindow(1280, 720, "GW");
     SetTargetFPS(60);
 
-    spawnBall();
     spawnPlayer();
-    spawnEnemy();
 }
 
 void Game::run(void)
@@ -168,23 +166,6 @@ void Game::sCollision(void)
     // Player Collision
 };
 
-void Game::spawnBall(void)
-{
-    const float BALL_SPEED = 5;
-    
-    // Create ball
-    auto entity = m_entities.addEntity("ball");
-
-    // cTransform is used to control the ball's velocity and angle.
-    entity->cTransform = std::make_shared<CTransform>(Vector2{BALL_SPEED, BALL_SPEED}, 0.0f);
-
-    // Entity Dimensions
-    entity->cShape = std::make_shared<CShape>(Vector2{1280 / 2,720 / 2}, 32.0f, BLACK);
-    
-    // Set game's ball variable to be this entity
-    m_ball = entity;
-};
-
 
  void Game::spawnPlayer(void)
  {
@@ -196,30 +177,13 @@ void Game::spawnBall(void)
      // Create Player
      auto entity = m_entities.addEntity("player");
      
-     //
+     // cTransform is used to control the ball's velocity and angle.
      entity->cTransform = std::make_shared<CTransform>(Vector2{PLAYER_SPEED, PLAYER_SPEED}, 0.0f);
      
+     // Entity Dimensions
      entity->cShape = std::make_shared<CShape>(Vector2{40, 720 / 2}, paddleSize, BLACK);
      
+     // Set game's ball variable to be this entity
      m_player = entity;
  };
  
-void Game::spawnEnemy(void)
-{
-    const float ENEMY_SPEED = 9;
-    const Vector2 PADDLE_SIZE = {20, 160};
- 
-    // Create Enemy
-    auto entity = m_entities.addEntity("enemy");
-    
-    entity->cTransform = std::make_shared<CTransform>(Vector2{ENEMY_SPEED, ENEMY_SPEED}, 0.0f);
-    
-    entity->cShape = std::make_shared<CShape>(
-        Vector2{static_cast<float>(GetScreenWidth() - 40 - PADDLE_SIZE.x), 720 / 2},
-        PADDLE_SIZE,
-        BLACK
-    );
-    
-    m_enemy = entity;
-    
-}

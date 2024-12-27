@@ -1,10 +1,6 @@
-﻿  EntityManager.cpp
-  Game.cpp
-C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(161,61): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(162,62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Entity.cpp
-  main.cpp
-  Generating Code...
+﻿  Game.cpp
+C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(159,61): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(160,62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   GW.vcxproj -> C:\Users\Swervo\Documents\GitHub\ECS-Architecture\GW\Windows\GW\x64\Debug\GW.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
