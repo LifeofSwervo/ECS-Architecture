@@ -66,8 +66,17 @@ void Game::sUserInput()
        {
            movement.y += entity->cTransform->velocity.y;
        }
+       if (IsKeyDown(KEY_LEFT))
+       {
+           movement.x -= entity->cTransform->velocity.x;
+       }
+       if (IsKeyDown(KEY_RIGHT))
+       {
+           movement.x += entity->cTransform->velocity.x;
+       }
        
        entity->cShape->center.y += movement.y;
+       entity->cShape->center.x += movement.x;
        
        if (entity->cShape->center.y < 0)
        {
@@ -85,24 +94,16 @@ void Game::sUserInput()
 void Game::sRender(void)
 {
     BeginDrawing();
-    ClearBackground(RAYWHITE);
+    ClearBackground(BLACK);
     
     // Iterate over all entities and draw only those with a shape
     for (const auto& entity : m_entities.getEntities())
     {
         if (entity->cShape)
         {
-            if (entity->tag() == "ball")
+            if (entity->tag() == "player")
             {
                 entity->cShape->DrawBall();
-            }
-            else if (entity->tag() == "player")
-            {
-                entity->cShape->DrawPaddle();
-            }
-            else if (entity->tag() == "enemy")
-            {
-                entity->cShape->DrawPaddle();
             }
         }
     }
@@ -181,9 +182,22 @@ void Game::sCollision(void)
      entity->cTransform = std::make_shared<CTransform>(Vector2{PLAYER_SPEED, PLAYER_SPEED}, 0.0f);
      
      // Entity Dimensions
-     entity->cShape = std::make_shared<CShape>(Vector2{40, 720 / 2}, paddleSize, BLACK);
+     entity->cShape = std::make_shared<CShape>(Vector2{1280 / 2, 720 / 2}, 10, RAYWHITE);
      
      // Set game's ball variable to be this entity
      m_player = entity;
  };
+
+ void Game::spawnEnemy(void)
+ {
+     // Create Enemy
+     auto entity = m_entities.addEntity("enemy");
+
+     // Velocity & Angle
+     entity->cTransform = std::make_shared<CTransform>(Vector2{ 9, 9 }, 0.0f);
+
+     // Entity Dimensions
+     entity->cShape = std::make_shared<CShape>(Vector2{ static_cast<float>(rand() * 1280), static_cast<float>(rand() * 720) }, static_cast<float>(rand() * 10), RAYWHITE);
+
+ }
  

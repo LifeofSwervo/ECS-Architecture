@@ -1,6 +1,52 @@
 ﻿  Game.cpp
-C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(159,61): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(160,62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(160,61): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(161,62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(143,72): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(142): message : see reference to function template instantiation '_Ty *std::construct_at<_Ty,Vector2,int,Color,void>(_Ty *const ,Vector2 &&,int &&,Color &&) noexcept(<expr>)' being compiled
+          with
+          [
+              _Ty=CShape
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2021): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Vector2,int,Color>(_Ty &,Vector2 &&,int &&,Color &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=CShape
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2747): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Vector2,int,Color>(Vector2 &&,int &&,Color &&)' being compiled
+          with
+          [
+              _Ty=CShape
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2748): message : see reference to function template instantiation 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<Vector2,int,Color>(Vector2 &&,int &&,Color &&)' being compiled
+          with
+          [
+              _Ty=CShape
+          ]
+C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(185): message : see reference to function template instantiation 'std::shared_ptr<CShape> std::make_shared<CShape,Vector2,int,Color>(Vector2 &&,int &&,Color &&)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(158,77): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(144,69): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(151): message : see reference to function template instantiation '_Ty *std::construct_at<_Ty,Vector2,int,Color,void>(_Ty *const ,Vector2 &&,int &&,Color &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=CShape
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2021): message : see reference to function template instantiation 'void std::_Construct_in_place<_Ty,Vector2,int,Color>(_Ty &,Vector2 &&,int &&,Color &&) noexcept(false)' being compiled
+          with
+          [
+              _Ty=CShape
+          ]
   GW.vcxproj -> C:\Users\Swervo\Documents\GitHub\ECS-Architecture\GW\Windows\GW\x64\Debug\GW.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
