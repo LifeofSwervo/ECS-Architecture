@@ -32,6 +32,7 @@ void EntityManager::removeDeadEntities(EntityVec & vec)
 {
     // Removes all dead entities from the input vector
     // This function is called by the update function
+    // Test
 }
 
 std::shared_ptr<Entity> EntityManager::addEntity(const std::string & tag)

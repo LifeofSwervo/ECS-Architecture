@@ -1,6 +1,4 @@
 ﻿  Game.cpp
-C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(160,61): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(161,62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(143,72): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
           with
           [
@@ -26,7 +24,7 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
           [
               _Ty=CShape
           ]
-C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\MacOS\Pong\Pong\Game.cpp(185): message : see reference to function template instantiation 'std::shared_ptr<CShape> std::make_shared<CShape,Vector2,int,Color>(Vector2 &&,int &&,Color &&)' being compiled
+C:\Users\Swervo\Documents\GitHub\ECS-Architecture\GW\Windows\GW\GW\Game.cpp(216): message : see reference to function template instantiation 'std::shared_ptr<CShape> std::make_shared<CShape,Vector2,int,Color>(Vector2 &&,int &&,Color &&)' being compiled
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(158,77): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
           with
           [

@@ -15,6 +15,7 @@ void Game::init(void)
     SetTargetFPS(60);
 
     spawnPlayer();
+    spawnEnemy();
 }
 
 void Game::run(void)
@@ -49,6 +50,13 @@ void Game::sMovement(void)
     }
     
     // Enemy Movement
+    for (const auto& entity : m_entities.getEntities("enemy"))
+    {
+        if (entity->cShape)
+        {
+            
+        }
+    }
 }
 
 void Game::sUserInput()
@@ -105,6 +113,10 @@ void Game::sRender(void)
             {
                 entity->cShape->DrawBall();
             }
+            if (entity->tag() == "enemy")
+            {
+                entity->cShape->DrawBall();
+            }
         }
     }
     EndDrawing();
@@ -112,6 +124,7 @@ void Game::sRender(void)
 
 void Game::sCollision(void)
 {
+    /*
     // Ball collision
     for (const auto& entity : m_entities.getEntities("ball"))
     {
@@ -163,8 +176,9 @@ void Game::sCollision(void)
             };
         }
     }
-    
+    */
     // Player Collision
+
 };
 
 
@@ -184,7 +198,7 @@ void Game::sCollision(void)
      // Entity Dimensions
      entity->cShape = std::make_shared<CShape>(Vector2{1280 / 2, 720 / 2}, 10, RAYWHITE);
      
-     // Set game's ball variable to be this entity
+     // Set games player var to be this entity
      m_player = entity;
  };
 
@@ -197,7 +211,10 @@ void Game::sCollision(void)
      entity->cTransform = std::make_shared<CTransform>(Vector2{ 9, 9 }, 0.0f);
 
      // Entity Dimensions
-     entity->cShape = std::make_shared<CShape>(Vector2{ static_cast<float>(rand() * 1280), static_cast<float>(rand() * 720) }, static_cast<float>(rand() * 10), RAYWHITE);
+     // Randomly spawns on screen at a radius of 2 to 12
+     entity->cShape = std::make_shared<CShape>(Vector2{ static_cast<float>(rand() % 1280), static_cast<float>(rand() % 720) }, static_cast<float>((rand() % 10) + 2), YELLOW);
 
+     // Set game's enemy var to be this entity
+     m_enemy = entity;
  }
  

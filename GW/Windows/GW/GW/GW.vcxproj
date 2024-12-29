@@ -140,9 +140,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Pong\MacOS\Pong\Pong\EntityManager.cpp" />
-    <ClCompile Include="..\..\..\..\Pong\MacOS\Pong\Pong\Game.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
