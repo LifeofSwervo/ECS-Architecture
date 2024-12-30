@@ -5,9 +5,6 @@
  *************************************************************************************************************************************************/
 #include "Game.hpp"
 
-int SCREEN_WIDTH = 1280;
-int SCREEN_HEIGHT = 800;
-
 typedef enum GameScreen
 {
     LOGO = 0,
@@ -23,6 +20,7 @@ int main(void)
     while (!WindowShouldClose())
     {
         g.run();
+
     }
     // TODO: Unload all loaded data (textures, fonts, audio) here!
     CloseWindow(); // Close window and OpenGL context

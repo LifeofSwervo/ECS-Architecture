@@ -1,33 +1,50 @@
 #pragma once
-// Components.h
+// Components.hpp
 #include "Common.hpp"
+
 
 class CTransform
 {
 public:
-    Vec2 pos = { 0.0, 0.0 }; // Center of object
-    Vec2 velocity = { 0.0, 0.0 };
+    Vector2 velocity;
     float angle = 0;
 
     // Constructor
-    CTransform(const Vec2& p, const Vec2& v, float a)
-        : pos(p), velocity(v), angle(a) {}
+    CTransform(const Vector2& v, float a)
+        : velocity(v), angle(a) {}
 };
+
 
 class CShape
 {
 public:
     Vector2 center;
+    Vector2 rectSize;
     float radius;
     Color fillColor;
     Color outlineColor;
     float outlineThickness;
 
+    /*
     // Default constructor
     CShape(Vector2 center, float radius, Color fill, Color outline, float thickness)
         : center(center), radius(radius), fillColor(fill), outlineColor(outline), outlineThickness(thickness) {}
+     */
 
-    void Draw() const
+     /*// Default Constructor
+     CShape(Vector2 center, Color fillColor)
+         : center(center), fillColor(fillColor) {}
+      */
+
+      // Circle Constructor
+    CShape(Vector2 center, float radius, Color fillColor)
+        : center(center), radius(radius), fillColor(fillColor) {}
+
+    // Paddle Constructor
+    CShape(Vector2 center, Vector2 rectSize, Color fillColor)
+        : center(center), rectSize(rectSize), fillColor(fillColor) {}
+
+    void DrawBall() const
     {
         DrawCircleV(center, radius, fillColor);
         /*if (outlineThickness > 0)
@@ -35,6 +52,11 @@ public:
             DrawCircleLines(center.x, center.y, radius + outlineThickness, outlineColor);
         }
         */
+    }
+
+    void DrawPaddle() const
+    {
+        DrawRectangleV(center, rectSize, fillColor);
     }
 };
 
@@ -79,5 +101,3 @@ public:
 
     CInput() {}
 };
-
-

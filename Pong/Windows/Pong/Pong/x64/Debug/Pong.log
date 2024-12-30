@@ -1,8 +1,9 @@
 ﻿  Entity.cpp
   EntityManager.cpp
-  main.cpp
   Game.cpp
-  Vec2.cpp
+C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\Windows\Pong\Pong\Game.cpp(161,61): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\Windows\Pong\Pong\Game.cpp(162,62): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  main.cpp
   Generating Code...
   Pong.vcxproj -> C:\Users\Swervo\Documents\GitHub\ECS-Architecture\Pong\Windows\Pong\x64\Debug\Pong.exe
   'pwsh.exe' is not recognized as an internal or external command,
