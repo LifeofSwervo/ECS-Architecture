@@ -51,6 +51,19 @@ void Game::sMovement(void)
     }
 
     // Enemy Movement
+    for (const auto& entity : m_entities.getEntities("enemy"))
+    {
+        if (entity->cShape)
+        {
+            // Delta is the difference between the ball and enemy's y position
+            float delta = m_ball->cShape->center.y - entity->cShape->center.y;
+
+            // Ensures consistent movement
+            float movement = std::clamp(delta, -entity->cTransform->velocity.y, entity->cTransform->velocity.y);
+            
+            entity->cShape->center.y += movement;
+        }
+    }
 }
 
 void Game::sUserInput()
@@ -116,14 +129,12 @@ void Game::sCollision(void)
     // Ball collision
     for (const auto& entity : m_entities.getEntities("ball"))
     {
-
-
         if (CheckCollisionCircleRec(
             m_ball->cShape->center,
             m_ball->cShape->radius,
             {
-                m_player->cShape->center.x - m_player->cShape->rectSize.x / 2,
-                m_player->cShape->center.y - m_player->cShape->rectSize.y / 2,
+                m_player->cShape->center.x,
+                m_player->cShape->center.y,
                 m_player->cShape->rectSize.x,
                 m_player->cShape->rectSize.y
             }))
@@ -166,6 +177,20 @@ void Game::sCollision(void)
     }
 
     // Player Collision
+
+    // Enemy Collision
+    for (const auto& entity : m_entities.getEntities("enemy"))
+    {
+        // Enemy Screen Constraints
+        if (entity->cShape->center.y < 0)
+        {
+            entity->cShape->center.y = 0;
+        };
+        if (entity->cShape->center.y + entity->cShape->rectSize.y > GetScreenHeight())
+        {
+            entity->cShape->center.y = GetScreenHeight() - entity->cShape->rectSize.y;
+        };
+    };
 };
 
 void Game::spawnBall(void)
@@ -196,9 +221,10 @@ void Game::spawnPlayer(void)
     // Create Player
     auto entity = m_entities.addEntity("player");
 
-    //
+    // Velocity & Angle
     entity->cTransform = std::make_shared<CTransform>(Vector2{ PLAYER_SPEED, PLAYER_SPEED }, 0.0f);
 
+    // Coordinates, size, & color
     entity->cShape = std::make_shared<CShape>(Vector2{ 40, 720 / 2 }, paddleSize, BLACK);
 
     m_player = entity;
@@ -212,9 +238,12 @@ void Game::spawnEnemy(void)
     // Create Enemy
     auto entity = m_entities.addEntity("enemy");
 
+    // Velocity & Angle
     entity->cTransform = std::make_shared<CTransform>(Vector2{ ENEMY_SPEED, ENEMY_SPEED }, 0.0f);
 
-    entity->cShape = std::make_shared<CShape>(
+    // Coordinates, size, & color
+    entity->cShape = std::make_shared<CShape>
+        (
         Vector2{ static_cast<float>(GetScreenWidth() - 40 - PADDLE_SIZE.x), 720 / 2 },
         PADDLE_SIZE,
         BLACK
