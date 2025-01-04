@@ -1,5 +1,5 @@
 #pragma once
-// Components.h
+// Components.hpp
 #include "Common.hpp"
 
 
@@ -30,16 +30,16 @@ public:
     CShape(Vector2 center, float radius, Color fill, Color outline, float thickness)
         : center(center), radius(radius), fillColor(fill), outlineColor(outline), outlineThickness(thickness) {}
      */
-    
-    /*// Default Constructor
-    CShape(Vector2 center, Color fillColor)
-        : center(center), fillColor(fillColor) {}
-     */
-    
-    // Circle Constructor
+
+     /*// Default Constructor
+     CShape(Vector2 center, Color fillColor)
+         : center(center), fillColor(fillColor) {}
+      */
+
+      // Circle Constructor
     CShape(Vector2 center, float radius, Color fillColor)
-    : center(center), radius(radius), fillColor(fillColor) {}
-    
+        : center(center), radius(radius), fillColor(fillColor) {}
+
     // Paddle Constructor
     CShape(Vector2 center, Vector2 rectSize, Color fillColor)
         : center(center), rectSize(rectSize), fillColor(fillColor) {}
@@ -53,7 +53,7 @@ public:
         }
         */
     }
-    
+
     void DrawPaddle() const
     {
         DrawRectangleV(center, rectSize, fillColor);

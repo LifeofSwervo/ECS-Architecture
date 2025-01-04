@@ -13,13 +13,15 @@
 class Game
 {
     EntityManager m_entities;
-    
+
     std::shared_ptr<Entity> m_ball;
     std::shared_ptr<Entity> m_player;
     std::shared_ptr<Entity> m_enemy;
-    
+
     int m_currentFrame = 0;
     float m_ballPauseTimer = 0.0f;
+    int m_playerScore = 0;
+    int m_enemyScore = 0;
 
 
 
@@ -30,11 +32,16 @@ class Game
     void sRender(void);         // System: Render / Drawing
     void sEnemySpawner(void);
     void sCollision(void);
+    void sScoreHandler(void);
+    void sBackground(void);
 
     // Spawn Entites
     void spawnBall(void);
     void spawnPlayer(void);
     void spawnEnemy(void);
+    
+    
+
 
 public:
     void init(void);

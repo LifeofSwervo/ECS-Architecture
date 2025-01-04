@@ -10,18 +10,18 @@ typedef std::map<std::string, EntityVec> EntityMap; // Map (dictionary), Key is 
 class EntityManager
 {
     EntityVec m_entities;
-    EntityVec m_entitiesToAdd; // Temp list 
+    EntityVec m_entitiesToAdd; // Temp list
     EntityMap m_entityMap;
     size_t m_totalEntities;
 
-    void removeDeadEntities(EntityVec & vec);
+    void removeDeadEntities(EntityVec& vec);
 
 
 public:
     EntityManager();
     void update();
-    std::shared_ptr<Entity> addEntity(const std::string & tag);
+    std::shared_ptr<Entity> addEntity(const std::string& tag);
 
-    const EntityVec & getEntities();
-    const EntityVec & getEntities(const std::string & tag);
+    const EntityVec& getEntities();
+    const EntityVec& getEntities(const std::string& tag);
 };

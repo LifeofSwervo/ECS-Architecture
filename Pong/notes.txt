@@ -1,0 +1,20 @@
+// Check X axis of screen.
+if (entity->cShape->center.x + entity->cShape->radius >= GetScreenWidth())
+  {
+    // Reset ball functionality.
+    entity->cTransform->velocity.x *= -1;
+    entity->cShape->center.x = GetScreenWidth() / 2;
+    entity->cShape->center.y = GetScreenHeight() / 2;
+    m_ballPauseTimer = 2.0f;
+  }
+else if (entity->cShape->center.x - entity->cShape->radius <= 0)
+  {
+    // Reset ball functionality.
+    entity->cTransform->velocity.x *= -1;
+    entity->cShape->center.x = GetScreenWidth() / 2;
+    entity->cShape->center.y = GetScreenHeight() / 2;
+    m_ballPauseTimer = 2.0f;
+  }
+
+
+  
