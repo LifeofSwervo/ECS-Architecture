@@ -114,17 +114,6 @@ void Game::sUserInput()
         }
 
         entity->cShape->center.y += movement.y;
-
-        if (entity->cShape->center.y < 0)
-        {
-            entity->cShape->center.y = 0;
-        }
-        if (entity->cShape->center.y + entity->cShape->rectSize.y > GetScreenHeight())
-        {
-            entity->cShape->center.y = GetScreenHeight() - entity->cShape->rectSize.y;
-        }
-
-
     }
 };
 
@@ -222,6 +211,17 @@ void Game::sCollision(void)
     }
 
     // Player Collision
+    for (const auto& entity : m_entities.getEntities("player"))
+    {
+        if (entity->cShape->center.y < 0)
+        {
+            entity->cShape->center.y = 0;
+        }
+        if (entity->cShape->center.y + entity->cShape->rectSize.y > GetScreenHeight())
+        {
+            entity->cShape->center.y = GetScreenHeight() - entity->cShape->rectSize.y;
+        }
+    }
 
     // Enemy Collision
     for (const auto& entity : m_entities.getEntities("enemy"))
