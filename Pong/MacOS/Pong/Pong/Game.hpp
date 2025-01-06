@@ -10,6 +10,16 @@
 #include "Common.hpp"
 #include "Entity.hpp"
 #include "EntityManager.hpp"
+
+typedef enum GameScreen
+{
+    TITLE,
+    GAMEPLAY,
+    ENDING
+} GameScreen;
+
+
+
 class Game
 {
     EntityManager m_entities;
@@ -22,10 +32,12 @@ class Game
     float m_ballPauseTimer = 0.0f;
     int m_playerScore = 0;
     int m_enemyScore = 0;
+    GameScreen m_currentScreen = TITLE; 
 
 
 
     // System functions
+    void sMainMenu(void);
     void sMovement(void);       // System: Entity Position / Movement
     void sUserInput(void);
     void sLifespan(void);
@@ -34,6 +46,8 @@ class Game
     void sCollision(void);
     void sScoreHandler(void);
     void sBackground(void);
+    void sEndScreen(void);
+    void sReset(void);
 
     // Spawn Entites
     void spawnBall(void);

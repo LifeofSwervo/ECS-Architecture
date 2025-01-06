@@ -5,14 +5,6 @@
  *************************************************************************************************************************************************/
 #include "Game.hpp"
 
-typedef enum GameScreen
-{
-    LOGO = 0,
-    TITLE,
-    GAMEPLAY,
-    ENDING
-} GameScreen;
-
 int main(void)
 {
     Game g;

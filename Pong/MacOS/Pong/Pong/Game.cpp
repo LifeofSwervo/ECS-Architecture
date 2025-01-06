@@ -21,16 +21,47 @@ void Game::init(void)
 
 void Game::run(void)
 {
-    m_entities.update();
-    Game::sRender();
-    Game::sMovement();
-    Game::sUserInput();
-    Game::sCollision();
+    switch (m_currentScreen)
+    {
+        case TITLE:
+            sMainMenu();
+            break;
+        case GAMEPLAY:
+            m_entities.update();
+            sRender();
+            sMovement();
+            sUserInput();
+            sCollision();
+
+            // Check for win condition
+            if (m_playerScore >= 10) {  // Example: Player wins at 10 points
+                m_currentScreen = ENDING;
+            } else if (m_enemyScore >= 10) {  // Example: Enemy wins at 10 points
+                m_currentScreen = ENDING;
+            }
+            break;
+        case ENDING:
+            sEndScreen();
+            break;
+    }
 }
 
 //------------------------------------------------------------------------------------------
 // System Functions
 //------------------------------------------------------------------------------------------
+
+void Game::sMainMenu() {
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    DrawText("Welcome to the Game!", 400, 200, 40, BLACK);
+    DrawText("Press ENTER to start", 450, 400, 20, BLACK);
+    EndDrawing();
+
+    if (IsKeyPressed(KEY_ENTER)) {
+        m_currentScreen = GAMEPLAY;  // Switch to gameplay
+    }
+}
+
 
 void Game::sMovement(void)
 {
@@ -219,6 +250,33 @@ void Game::sBackground(void)
     Vector2 bisectorBottom = {static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight())};
     DrawLineV(bisectorTop, bisectorBottom, BLACK);
 }
+
+void Game::sEndScreen() {
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+    DrawText("Game Over!", 500, 300, 40, BLACK);
+    DrawText(TextFormat("Player Score: %d", m_playerScore), 500, 350, 20, BLACK);
+    DrawText(TextFormat("Enemy Score: %d", m_enemyScore), 500, 380, 20, BLACK);
+    DrawText("Press R to Restart or ESC to Quit", 450, 500, 20, BLACK);
+    EndDrawing();
+
+    if (IsKeyPressed(KEY_R)) {
+        sReset();  // Function to reset variables and entities
+        m_currentScreen = TITLE;  // Go back to the main menu
+    }
+    if (IsKeyPressed(KEY_ESCAPE)) {
+        CloseWindow();  // Quit game
+    }
+}
+
+void Game::sReset() {
+    m_playerScore = 0;
+    m_enemyScore = 0;
+    spawnBall();
+    spawnPlayer();
+    spawnEnemy();
+}
+
 
 void Game::spawnBall(void)
 {
