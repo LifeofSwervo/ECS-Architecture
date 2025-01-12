@@ -148,9 +148,13 @@ void Game::sRender(void)
 
 void Game::sCollision(void)
 {
+    const float MAX_BOUNCE_ANGLE = 75.0f * (PI / 180.0f);
+    const float BALL_SPEED = 14.0f;
+    
     // Ball collision
     for (const auto& entity : m_entities.getEntities("ball"))
     {
+        // If Ball Collides with Player
         if (CheckCollisionCircleRec(
             m_ball->cShape->center,
             m_ball->cShape->radius,
@@ -161,9 +165,18 @@ void Game::sCollision(void)
                 m_player->cShape->rectSize.y
             }))
         {
-            m_ball->cTransform->velocity.x *= -1;
+            //m_ball->cTransform->velocity.x *= -1;
+            
+            float relativeIntersectY = (m_player->cShape->center.y + (m_player->cShape->rectSize.y / 2)) - entity->cShape->center.y;
+            float normalizedRelativeY = relativeIntersectY / (m_player->cShape->rectSize.y / 2);
+            float bounceAngle = normalizedRelativeY * MAX_BOUNCE_ANGLE;
+             
+            entity->cTransform->velocity.x = BALL_SPEED * cos(bounceAngle);
+            entity->cTransform->velocity.y = BALL_SPEED * -sin(bounceAngle);
+            
         };
 
+        // If ball collides with enemy
         if (CheckCollisionCircleRec(
             m_ball->cShape->center,
             m_ball->cShape->radius,
@@ -174,7 +187,15 @@ void Game::sCollision(void)
                 m_enemy->cShape->rectSize.y
             }))
         {
-            m_ball->cTransform->velocity.x *= -1;
+            //m_ball->cTransform->velocity.x *= -1;
+            
+            float relativeIntersectY = (m_enemy->cShape->center.y + (m_enemy->cShape->rectSize.y / 2)) - entity->cShape->center.y;
+            float normalizedRelativeY = relativeIntersectY / (m_enemy->cShape->rectSize.y / 2);
+            float bounceAngle = normalizedRelativeY * MAX_BOUNCE_ANGLE;
+             
+            entity->cTransform->velocity.x = BALL_SPEED * cos(bounceAngle);
+            entity->cTransform->velocity.y = BALL_SPEED * -sin(bounceAngle);
+            
         }
 
         // Check for ball touching screen constraints
