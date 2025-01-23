@@ -3,27 +3,34 @@
 
 /*
 // Import Game Config
-Game::Game(const std::string & config)
+Game::Game()
 {
     init(config);
 }
-*/
+ */
+
+Game::Game() : m_window(), m_entities(), m_running(true) {}
 
 void Game::init(void)
 {
     // Create window
-    // Set FPS (60)
+    m_window.create(sf::VideoMode({1280, 720}), "Test");
+    m_window.setFramerateLimit(60);
     
     // Spawn Entities
 }
 
 void Game::run(void)
 {
-    m_entities.update();
-    Game::sRender();
-    Game::sMovement();
-    Game::sUserInput();
-    Game::sCollision();
+    while (m_running)
+    {
+        m_entities.update();
+        Game::sRender();
+        Game::sMovement();
+        Game::sUserInput();
+        Game::sCollision();
+    }
+    
 }
 
 //------------------------------------------------------------------------------------------
@@ -50,5 +57,8 @@ void Game::sCollision(void)
     
 }
 
+// Set paused function
+
+// Spawn Player function
 
 

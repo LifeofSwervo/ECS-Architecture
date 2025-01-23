@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4416A02C2D39BFEF00DDE5E3 /* libsfml-window.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4416A02B2D39BFEF00DDE5E3 /* libsfml-window.3.0.0.dylib */; };
-		4445D4AA2D39C14D00799480 /* libsfml-graphics.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445D4A92D39C14D00799480 /* libsfml-graphics.3.0.0.dylib */; };
-		4445D4AC2D39C19000799480 /* libsfml-system.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445D4AB2D39C19000799480 /* libsfml-system.3.0.0.dylib */; };
-		4445D4AE2D3AAC7E00799480 /* libsfml-audio.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445D4AD2D3AAC7E00799480 /* libsfml-audio.3.0.0.dylib */; };
 		4445D4B22D3AB83400799480 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4445D4B12D3AB83400799480 /* Game.cpp */; };
 		4445D4B52D3AEFFB00799480 /* EntityManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4445D4B42D3AEFFB00799480 /* EntityManager.cpp */; };
 		4445D4B82D3D6AB600799480 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4445D4B62D3D6AB600799480 /* Entity.cpp */; };
 		44542F822D39B1030064404B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44542F812D39B1030064404B /* main.cpp */; };
+		447494032D403C6F0051F12C /* Vec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 447494012D403C6F0051F12C /* Vec2.cpp */; };
+		447494042D428FBA0051F12C /* libsfml-window.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4416A02B2D39BFEF00DDE5E3 /* libsfml-window.3.0.0.dylib */; };
+		447494052D428FBA0051F12C /* libsfml-system.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445D4AB2D39C19000799480 /* libsfml-system.3.0.0.dylib */; };
+		447494062D428FBA0051F12C /* libsfml-graphics.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445D4A92D39C14D00799480 /* libsfml-graphics.3.0.0.dylib */; };
+		447494072D428FBA0051F12C /* libsfml-audio.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4445D4AD2D3AAC7E00799480 /* libsfml-audio.3.0.0.dylib */; };
+		447494092D428FBA0051F12C /* libsfml-network.3.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 447494082D428FBA0051F12C /* libsfml-network.3.0.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +46,9 @@
 		4445D4BA2D3D6C1600799480 /* Components.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Components.hpp; sourceTree = "<group>"; };
 		44542F7E2D39B1030064404B /* SFML-Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "SFML-Test"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44542F812D39B1030064404B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		447494012D403C6F0051F12C /* Vec2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec2.cpp; sourceTree = "<group>"; };
+		447494022D403C6F0051F12C /* Vec2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vec2.hpp; sourceTree = "<group>"; };
+		447494082D428FBA0051F12C /* libsfml-network.3.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsfml-network.3.0.0.dylib"; path = "../../../../../../../opt/homebrew/Cellar/sfml/3.0.0/lib/libsfml-network.3.0.0.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +56,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4445D4AE2D3AAC7E00799480 /* libsfml-audio.3.0.0.dylib in Frameworks */,
-				4445D4AC2D39C19000799480 /* libsfml-system.3.0.0.dylib in Frameworks */,
-				4445D4AA2D39C14D00799480 /* libsfml-graphics.3.0.0.dylib in Frameworks */,
-				4416A02C2D39BFEF00DDE5E3 /* libsfml-window.3.0.0.dylib in Frameworks */,
+				447494092D428FBA0051F12C /* libsfml-network.3.0.0.dylib in Frameworks */,
+				447494042D428FBA0051F12C /* libsfml-window.3.0.0.dylib in Frameworks */,
+				447494052D428FBA0051F12C /* libsfml-system.3.0.0.dylib in Frameworks */,
+				447494062D428FBA0051F12C /* libsfml-graphics.3.0.0.dylib in Frameworks */,
+				447494072D428FBA0051F12C /* libsfml-audio.3.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,8 +94,10 @@
 				4445D4B42D3AEFFB00799480 /* EntityManager.cpp */,
 				4445D4B62D3D6AB600799480 /* Entity.cpp */,
 				4445D4B72D3D6AB600799480 /* Entity.hpp */,
-				4445D4B92D3D6BB400799480 /* Common.hpp */,
 				4445D4BA2D3D6C1600799480 /* Components.hpp */,
+				4445D4B92D3D6BB400799480 /* Common.hpp */,
+				447494012D403C6F0051F12C /* Vec2.cpp */,
+				447494022D403C6F0051F12C /* Vec2.hpp */,
 			);
 			path = "SFML-Test";
 			sourceTree = "<group>";
@@ -97,6 +105,7 @@
 		44542F882D39B3140064404B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				447494082D428FBA0051F12C /* libsfml-network.3.0.0.dylib */,
 				4445D4AD2D3AAC7E00799480 /* libsfml-audio.3.0.0.dylib */,
 				4445D4AB2D39C19000799480 /* libsfml-system.3.0.0.dylib */,
 				4445D4A92D39C14D00799480 /* libsfml-graphics.3.0.0.dylib */,
@@ -166,6 +175,7 @@
 				44542F822D39B1030064404B /* main.cpp in Sources */,
 				4445D4B52D3AEFFB00799480 /* EntityManager.cpp in Sources */,
 				4445D4B22D3AB83400799480 /* Game.cpp in Sources */,
+				447494032D403C6F0051F12C /* Vec2.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

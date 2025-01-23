@@ -10,8 +10,8 @@ class Entity
     bool m_active = true;
     size_t m_id = 0;
     std::string m_tag = "default";
-
-    // Constructor
+    
+    // Constructor / Destructor
     Entity(const size_t id, const std::string& tag);
 
 public:
@@ -22,11 +22,13 @@ public:
     std::shared_ptr<CInput> cInput;
     std::shared_ptr<CScore> cScore;
     std::shared_ptr<CLifespan> cLifespan;
+    
+    
 
 
     // Private member access functions
     bool isActive() const; // Const at the end of declaration ensures function is not modified.
-    const std::string& tag() const;
+    const std::string & tag() const;
     const size_t id() const;
     void destroy();
 };

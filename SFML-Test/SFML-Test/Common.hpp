@@ -1,6 +1,10 @@
 // Common.hpp
 #pragma once
-#include <raylib.h>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
+
 #include <vector>
 #include <iostream>
 #include <memory>
