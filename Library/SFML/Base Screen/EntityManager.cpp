@@ -12,16 +12,16 @@ void EntityManager::update()
     //  - Adds them to the vector of all entites
     //  - Adds them to the vector inside the map, with the tag as the key
     
-    /*
+    
     for (auto& entity : m_entitiesToAdd)
     {
         m_entities.push_back(entity); // Pass entity to m_entities array.
         m_entityMap[entity->tag()].push_back(entity); // Give entityMap the tag of the entity.
     }
-    */
+    
         
         
-    //m_entitiesToAdd.clear(); // Clear all elements in the array
+    m_entitiesToAdd.clear(); // Clear all elements in the array
     removeDeadEntities(m_entities);
     
     for (auto& [tag, entityVec] : m_entityMap)
