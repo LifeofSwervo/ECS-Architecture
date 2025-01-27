@@ -23,6 +23,7 @@ void Game::init(void)
     m_window.setFramerateLimit(60);
     
     // Spawn Entities
+    spawnPlayer();
 }
 
 void Game::run(void)
@@ -54,9 +55,8 @@ void Game::run(void)
         sCollision();         // Handle collisions
 
         // Rendering
-        m_window.clear();     // Clear the window
+        //m_window.clear();   Delete 
         sRender();            // Render objects to the screen
-        m_window.display();   // Display the updated frame
     }
 }
 
@@ -77,6 +77,19 @@ void Game::sUserInput(void)
 void Game::sRender(void)
 {
     m_window.clear();
+    
+    for (const auto& entity : m_entities.getEntities())
+    {
+        if (entity->cShape)
+        {
+            if (entity->tag() == "player")
+            {
+                m_window.draw(entity->cShape->circle);
+            }
+        }
+    }
+    
+    m_window.display();
 }
 
 void Game::sCollision(void)
@@ -91,10 +104,12 @@ void Game::spawnPlayer(void)
 {
     auto entity = m_entities.addEntity("player");
     
-    // Spawn position and Velocity
+    // Spawn position and Velocity & angle
     entity->cTransform = std::make_shared<CTransform>(Vec2(200.0f, 200.0f), Vec2(1.0f, 1.0f), 0.0f);
     
     entity->cShape = std::make_shared<CShape>(32.0f, 8, sf::Color(10, 10, 10), sf::Color(255, 0, 0), 4.0f);
+    
+    entity->cShape->circle.setPosition({entity->cTransform->pos.x, entity->cTransform->pos.y});
     
     // Input component so player can use inputs
     entity->cInput = std::make_shared<CInput>();

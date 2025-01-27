@@ -54,7 +54,7 @@ void Game::run(void)
         sCollision();         // Handle collisions
 
         // Rendering
-        m_window.clear();     // Clear the window
+        //m_window.clear();   Delete 
         sRender();            // Render objects to the screen
         m_window.display();   // Display the updated frame
     }

@@ -22,10 +22,12 @@ public:
     CShape(float radius, int points, const sf::Color & fill, const sf::Color & outline, float thickness)
         : circle(radius, points)
     {
+        circle.setRadius(radius);
+        circle.setPointCount(points);
         circle.setFillColor(fill);
         circle.setOutlineColor(outline);
         circle.setOutlineThickness(thickness);
-        //circle.setOrigin(radius, radius)
+        //circle.setOrigin(radius);
     }
     
     // Circle Constructor
