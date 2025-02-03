@@ -107,6 +107,7 @@ void Game::spawnPlayer(void)
     // Spawn position and Velocity & angle
     entity->cTransform = std::make_shared<CTransform>(Vec2(200.0f, 200.0f), Vec2(1.0f, 1.0f), 0.0f);
     
+    // Radius, Points, Fill Color, Outline Color, Thickness
     entity->cShape = std::make_shared<CShape>(32.0f, 8, sf::Color(10, 10, 10), sf::Color(255, 0, 0), 4.0f);
     
     entity->cShape->circle.setPosition({entity->cTransform->pos.x, entity->cTransform->pos.y});
@@ -115,6 +116,26 @@ void Game::spawnPlayer(void)
     entity->cInput = std::make_shared<CInput>();
     
     m_player = entity;
+}
+
+void Game::spawnBall(void)
+{
+    const float BALL_SPEED = 10;
+    
+    // Get Screen Size
+    sf::Vector2u windowSize = m_window.getSize();
+    
+    
+    
+    // Center Vars
+    float centerX = (windowSize.x) / 2.0f;
+    
+    auto entity = m_entities.addEntity("ball");
+    
+    // Pos, Velocity, & angle
+    entity->cTransform = std::make_shared<CTransform>(Vec2(windowSize.x / 2.0f, windowSize.y / 2.0f), Vec2(BALL_SPEED, BALL_SPEED), 0.0f);
+    
+    entity-
 }
 
 
