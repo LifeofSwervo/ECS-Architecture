@@ -1,0 +1,340 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4474946B2D52B0330051F12C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4474946A2D52B0330051F12C /* main.cpp */; };
+		447494732D52B1E10051F12C /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 447494712D52B1E10051F12C /* Game.cpp */; };
+		447494782D52B90C0051F12C /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 447494762D52B90C0051F12C /* Entity.cpp */; };
+		4474947B2D52B93D0051F12C /* EntityManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 447494792D52B93D0051F12C /* EntityManager.cpp */; };
+		4474947E2D52B9690051F12C /* Vec2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4474947C2D52B9690051F12C /* Vec2.cpp */; };
+		447494832D5663390051F12C /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 447494822D5663390051F12C /* libSDL2.a */; };
+		447494852D5666400051F12C /* libSDL2_gfx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 447494842D5666400051F12C /* libSDL2_gfx.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		447494652D52B0330051F12C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		447494672D52B0330051F12C /* Pong - SDL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Pong - SDL"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4474946A2D52B0330051F12C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		447494712D52B1E10051F12C /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		447494722D52B1E10051F12C /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
+		447494742D52B6D10051F12C /* Common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Common.hpp; sourceTree = "<group>"; };
+		447494752D52B6EC0051F12C /* Components.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Components.hpp; sourceTree = "<group>"; };
+		447494762D52B90C0051F12C /* Entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
+		447494772D52B90C0051F12C /* Entity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		447494792D52B93D0051F12C /* EntityManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EntityManager.cpp; sourceTree = "<group>"; };
+		4474947A2D52B93D0051F12C /* EntityManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EntityManager.hpp; sourceTree = "<group>"; };
+		4474947C2D52B9690051F12C /* Vec2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vec2.cpp; sourceTree = "<group>"; };
+		4474947D2D52B9690051F12C /* Vec2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vec2.hpp; sourceTree = "<group>"; };
+		447494802D52B9E20051F12C /* libSDL3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL3.0.dylib; path = ../../../../../../../../opt/homebrew/Cellar/sdl3/3.2.0/lib/libSDL3.0.dylib; sourceTree = "<group>"; };
+		447494822D5663390051F12C /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../../../../opt/homebrew/Cellar/sdl2/2.30.12/lib/libSDL2.a; sourceTree = "<group>"; };
+		447494842D5666400051F12C /* libSDL2_gfx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2_gfx.a; path = ../../../../../../../../opt/homebrew/Cellar/sdl2_gfx/1.0.4/lib/libSDL2_gfx.a; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		447494642D52B0330051F12C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				447494852D5666400051F12C /* libSDL2_gfx.a in Frameworks */,
+				447494832D5663390051F12C /* libSDL2.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4474945E2D52B0330051F12C = {
+			isa = PBXGroup;
+			children = (
+				447494692D52B0330051F12C /* Pong - SDL */,
+				447494682D52B0330051F12C /* Products */,
+				4474947F2D52B9E20051F12C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		447494682D52B0330051F12C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				447494672D52B0330051F12C /* Pong - SDL */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		447494692D52B0330051F12C /* Pong - SDL */ = {
+			isa = PBXGroup;
+			children = (
+				4474946A2D52B0330051F12C /* main.cpp */,
+				447494712D52B1E10051F12C /* Game.cpp */,
+				447494722D52B1E10051F12C /* Game.hpp */,
+				447494742D52B6D10051F12C /* Common.hpp */,
+				447494752D52B6EC0051F12C /* Components.hpp */,
+				447494762D52B90C0051F12C /* Entity.cpp */,
+				447494772D52B90C0051F12C /* Entity.hpp */,
+				447494792D52B93D0051F12C /* EntityManager.cpp */,
+				4474947A2D52B93D0051F12C /* EntityManager.hpp */,
+				4474947C2D52B9690051F12C /* Vec2.cpp */,
+				4474947D2D52B9690051F12C /* Vec2.hpp */,
+			);
+			path = "Pong - SDL";
+			sourceTree = "<group>";
+		};
+		4474947F2D52B9E20051F12C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				447494842D5666400051F12C /* libSDL2_gfx.a */,
+				447494822D5663390051F12C /* libSDL2.a */,
+				447494802D52B9E20051F12C /* libSDL3.0.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		447494662D52B0330051F12C /* Pong - SDL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4474946E2D52B0330051F12C /* Build configuration list for PBXNativeTarget "Pong - SDL" */;
+			buildPhases = (
+				447494632D52B0330051F12C /* Sources */,
+				447494642D52B0330051F12C /* Frameworks */,
+				447494652D52B0330051F12C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pong - SDL";
+			productName = "Pong - SDL";
+			productReference = 447494672D52B0330051F12C /* Pong - SDL */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4474945F2D52B0330051F12C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					447494662D52B0330051F12C = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 447494622D52B0330051F12C /* Build configuration list for PBXProject "Pong - SDL" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4474945E2D52B0330051F12C;
+			productRefGroup = 447494682D52B0330051F12C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				447494662D52B0330051F12C /* Pong - SDL */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		447494632D52B0330051F12C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4474946B2D52B0330051F12C /* main.cpp in Sources */,
+				447494782D52B90C0051F12C /* Entity.cpp in Sources */,
+				4474947B2D52B93D0051F12C /* EntityManager.cpp in Sources */,
+				447494732D52B1E10051F12C /* Game.cpp in Sources */,
+				4474947E2D52B9690051F12C /* Vec2.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4474946C2D52B0330051F12C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		4474946D2D52B0330051F12C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4474946F2D52B0330051F12C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					/opt/homebrew/Cellar/sdl2/2.30.12/include,
+					/opt/homebrew/Cellar/sdl2_gfx/1.0.4/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/opt/homebrew/Cellar/sdl2/2.30.12/lib,
+					/opt/homebrew/Cellar/sdl2_gfx/1.0.4/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		447494702D52B0330051F12C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					/opt/homebrew/Cellar/sdl2/2.30.12/include,
+					/opt/homebrew/Cellar/sdl2_gfx/1.0.4/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/opt/homebrew/Cellar/sdl2/2.30.12/lib,
+					/opt/homebrew/Cellar/sdl2_gfx/1.0.4/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		447494622D52B0330051F12C /* Build configuration list for PBXProject "Pong - SDL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4474946C2D52B0330051F12C /* Debug */,
+				4474946D2D52B0330051F12C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4474946E2D52B0330051F12C /* Build configuration list for PBXNativeTarget "Pong - SDL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4474946F2D52B0330051F12C /* Debug */,
+				447494702D52B0330051F12C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4474945F2D52B0330051F12C /* Project object */;
+}
