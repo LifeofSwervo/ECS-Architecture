@@ -131,14 +131,14 @@ void Game::spawnBall(void)
     const float BALL_SPEED = 5.0f;
     int screenHeight, screenWidth;
     SDL_GetWindowSize(m_window, &screenWidth, &screenHeight);
-    int negRandomizer = sGetRandomValue(-1, 1);
     
-    
+    int negRandomizerX = sGetRandomValue(0, 1) ? 1 : -1;
+    int negRandomizerY = sGetRandomValue(0, 1) ? 1 : -1;
     
     auto entity = m_entities.addEntity("ball");
     
     // Spawn position and Velocity & angle
-    entity->cTransform = std::make_shared<CTransform>(Vec2(screenWidth / 2, screenHeight / 2), Vec2(BALL_SPEED * negRandomizer, BALL_SPEED * negRandomizer), 0.0f);
+    entity->cTransform = std::make_shared<CTransform>(Vec2(screenWidth / 2, screenHeight / 2), Vec2(BALL_SPEED * negRandomizerX, BALL_SPEED * negRandomizerY), 0.0f);
     
     // Properly initialize cShape before using it
         SDL_Color fillColor = {255, 0, 0, 255}; // Red color
