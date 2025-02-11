@@ -11,8 +11,7 @@ Game::Game()
 
 //Game::Game() : m_window(), m_entities(), m_running(true) {}
 
-Game::Game(void)
-{
+Game::Game() : m_window(nullptr), m_renderer(nullptr), m_running(true), m_windowSize{1280, 720} {
     init();
 }
 
@@ -28,7 +27,7 @@ void Game::init(void)
     SDL_Init(SDL_INIT_VIDEO);
     
     // Create window
-    m_window = SDL_CreateWindow("SDL Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, 0);
+    m_window = SDL_CreateWindow("SDL Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_windowSize.width, m_windowSize.height, 0);
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     
     // Spawn Entities
@@ -81,7 +80,13 @@ void Game::run(void)
 
 void Game::sMovement(void)
 {
-    
+    for (auto& entity : m_entities.getEntities())
+    {
+        if (entity->cTransform)
+        {
+            entity->cTransform->pos += entity->cTransform->velocity;
+        }
+    }
 }
 
 void Game::sUserInput(void)
@@ -113,6 +118,13 @@ void Game::sRender(void)
 void Game::sCollision(void)
 {
     
+    for (const auto& entity : m_entities.getEntities("ball"))
+    {
+        if (entity->cTransform->pos.y + entity->cShape->radius >= m_windowSize.height || entity->cTransform->pos.y - entity->cShape->radius <= 0)
+        {
+            entity->cTransform->velocity.y *= -1;
+        }
+    }
 }
 
 int Game::sGetRandomValue(int min, int max)
@@ -129,16 +141,16 @@ int Game::sGetRandomValue(int min, int max)
 void Game::spawnBall(void)
 {
     const float BALL_SPEED = 5.0f;
-    int screenHeight, screenWidth;
-    SDL_GetWindowSize(m_window, &screenWidth, &screenHeight);
     
+    // Grab value between 0 & 1.
+    // If value is 1 return 1, if 0 return -1.
     int negRandomizerX = sGetRandomValue(0, 1) ? 1 : -1;
     int negRandomizerY = sGetRandomValue(0, 1) ? 1 : -1;
     
     auto entity = m_entities.addEntity("ball");
     
     // Spawn position and Velocity & angle
-    entity->cTransform = std::make_shared<CTransform>(Vec2(screenWidth / 2, screenHeight / 2), Vec2(BALL_SPEED * negRandomizerX, BALL_SPEED * negRandomizerY), 0.0f);
+    entity->cTransform = std::make_shared<CTransform>(Vec2(m_windowSize.width / 2, m_windowSize.height / 2), Vec2(BALL_SPEED * negRandomizerX, BALL_SPEED * negRandomizerY), 0.0f);
     
     // Properly initialize cShape before using it
         SDL_Color fillColor = {255, 0, 0, 255}; // Red color

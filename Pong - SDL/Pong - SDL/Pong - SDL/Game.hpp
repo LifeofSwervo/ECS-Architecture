@@ -34,6 +34,12 @@ class Game
     void spawnBall(void);
     void spawnPlayer(void);
     void spawnEnemy(void);
+    
+    struct WindowSize
+    {
+        int width;
+        int height;
+    } m_windowSize;
 
 public:
     Game();
