@@ -32,6 +32,7 @@ void Game::init(void)
     
     // Spawn Entities
     spawnBall();
+    spawnPlayer();
 }
 
 void Game::run(void)
@@ -107,6 +108,9 @@ void Game::sRender(void)
             if (entity->tag() == "ball")
             {
                 entity->cShape->draw(m_renderer, entity->cTransform->pos.x, entity->cTransform->pos.y);
+            } else if (entity->tag() == "player")
+            {
+                entity->cShape->draw(m_renderer, entity->cTransform->pos.x, entity->cTransform->pos.y);
             }
         }
     }
@@ -147,21 +151,43 @@ void Game::spawnBall(void)
     int negRandomizerX = sGetRandomValue(0, 1) ? 1 : -1;
     int negRandomizerY = sGetRandomValue(0, 1) ? 1 : -1;
     
+    // Properly initialize cShape before using it
+        SDL_Color fillColor = {255, 255, 255, 255}; // Red color
+        SDL_Color outlineColor = {0, 0, 0, 255}; // White outline
+    
+    
     auto entity = m_entities.addEntity("ball");
     
     // Spawn position and Velocity & angle
     entity->cTransform = std::make_shared<CTransform>(Vec2(m_windowSize.width / 2, m_windowSize.height / 2), Vec2(BALL_SPEED * negRandomizerX, BALL_SPEED * negRandomizerY), 0.0f);
     
-    // Properly initialize cShape before using it
-        SDL_Color fillColor = {255, 0, 0, 255}; // Red color
-        SDL_Color outlineColor = {255, 255, 255, 255}; // White outline
-    
     // Radius, Points, Fill Color, Outline Color, Thickness
-    entity->cShape = std::make_shared<CShape>(32.0f, 8, fillColor, outlineColor, 4.0f);
+    entity->cShape = std::make_shared<CShape>();
+    entity->cShape->setCircle(16.0f, 8, fillColor, outlineColor, 4.0f);
+
     
     
     // Input component so player can use inputs
     //entity->cInput = std::make_shared<CInput>();
     
     m_ball = entity;
+}
+
+void Game::spawnPlayer(void)
+{
+    const float PLAYER_SPEED = 0.0f;
+    auto entity = m_entities.addEntity("player");
+    
+    SDL_Color fillColor = {255, 255, 255, 255};
+    SDL_Color outlineColor = {0, 0, 0, 255};
+    
+    // Spawn position and Velocity & angle
+    entity->cTransform = std::make_shared<CTransform>(Vec2(40, m_windowSize.height / 2), Vec2(PLAYER_SPEED, PLAYER_SPEED), 0.0f);
+    
+    
+    entity->cShape = std::make_shared<CShape>();
+    entity->cShape->setRectangle(20.0f, 100.0f, fillColor, outlineColor, 4.0f);
+
+    
+    m_player = entity;
 }
