@@ -14,14 +14,25 @@ public:
         : pos(p), velocity(v), angle(a) {}
 };
 
+enum class ShapeType
+{
+    Circle,
+    Rectangle
+};
+
 class CShape
 {
 public:
+    ShapeType type;
+    SDL_Color fillColor, outlineColor;
+    float outlineThickness;
+    
+    // Circle Properties
     float radius;
     int points;
-    SDL_Color fillColor;
-    SDL_Color outlineColor;
-    float thickness;
+
+    // Rectangle Properties
+    float width, height;
     
     /* Optimization tip
      SDL_PixelFormat* format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888);
@@ -31,16 +42,41 @@ public:
      filledCircleColor(renderer, x, y, radius, color);
      */
     
-    CShape(float r, int p, SDL_Color fill, SDL_Color outline, float thick)
-            : radius(r), points(p), fillColor(fill), outlineColor(outline), thickness(thick) {}
-    
-    void draw(SDL_Renderer* renderer, int x, int y)
+    CShape() : type(ShapeType::Circle), radius(0), points(0), width(0), height(0), outlineThickness(0) {}
+
+    void setCircle(float r, int p, SDL_Color fill, SDL_Color outline, float thickness)
     {
-        // Draw the filled circle
-        filledCircleColor(renderer, x, y, radius, SDL_MapRGBA(SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888),
-                                fillColor.r, fillColor.g, fillColor.b, fillColor.a));
+        type = ShapeType::Circle;
+        radius = r;
+        points = p;
+        fillColor = fill;
+        outlineColor = outline;
+        outlineThickness = thickness;
+    }
+
+    
+    void setRectangle(float w, float h, SDL_Color fill, SDL_Color outline, float thickness) {
+        type = ShapeType::Rectangle;
+        width = w;
+        height = h;
+        fillColor = fill;
+        outlineColor = outline;
+        outlineThickness = thickness;
     }
     
+    void draw(SDL_Renderer* renderer, float x, float y)
+    {
+        if (type == ShapeType::Circle)
+        {
+            filledCircleColor(renderer, x, y, radius, SDL_MapRGBA(SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888),
+                                            fillColor.r, fillColor.g, fillColor.b, fillColor.a));
+        } else if (type == ShapeType::Rectangle)
+        {
+            SDL_Rect rect = { static_cast<int>(x - width / 2), static_cast<int>(y - height / 2), static_cast<int>(width), static_cast<int>(height) };
+            SDL_SetRenderDrawColor(renderer, fillColor.r, fillColor.g, fillColor.b, fillColor.a);
+            SDL_RenderFillRect(renderer, &rect);
+        }
+    }
     
     
     /*sf::CircleShape circle;
