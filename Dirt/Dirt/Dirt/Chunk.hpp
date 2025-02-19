@@ -15,4 +15,5 @@ public:
     
     Chunk(Vec2 pos);
     void generate();
+    void render(SDL_Renderer* renderer);
 };

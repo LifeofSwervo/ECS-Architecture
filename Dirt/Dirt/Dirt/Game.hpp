@@ -3,12 +3,15 @@
 #include "Common.hpp"
 #include "Entity.hpp"
 #include "EntityManager.hpp"
+#include "ChunkManager.hpp"
 
 class Game
 {
+// Private
     SDL_Window* m_window;
     SDL_Renderer* m_renderer;
     EntityManager m_entities;
+    ChunkManager m_chunkManager;
 
     std::shared_ptr<Entity> m_ball;
     std::shared_ptr<Entity> m_player;
@@ -16,6 +19,7 @@ class Game
 
     int m_currentFrame = 0;
     bool m_running = true;
+    Vec2 playerPosition;
     
     void init(const std::string & config);
 
@@ -46,4 +50,6 @@ public:
     ~Game();
     void init(void);
     void run(void);
+    void update();
+    
 };

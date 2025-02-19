@@ -23,6 +23,7 @@ void Game::init(void)
     m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     
     // Spawn Entities
+    spawnPlayer();
     
     // Start with initial chunk
     
@@ -54,6 +55,9 @@ void Game::run(void)
         sUserInput();         // Handle user input
         sCollision();         // Handle collisions
 
+        // Update Chunks based on player position
+        m_chunkManager.updateChunks(m_player->cTransform->pos);
+        
         // Rendering
         sRender();
         
@@ -79,6 +83,12 @@ void Game::sMovement(void)
         if (entity->cTransform)
         {
             entity->cTransform->pos += entity->cTransform->velocity;
+            
+            // If the entity is the player, update chunks
+            if (entity->tag() == "player")
+            {
+                m_chunkManager.updateChunks(entity->cTransform->pos);
+            }
         }
     }
 }
@@ -92,8 +102,29 @@ void Game::sRender(void)
 {
     SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
     SDL_RenderClear(m_renderer);
-        
     
+    // Render chunks
+    for (const auto& [key, chunk] : m_chunkManager.getLoadedChunks())
+    {
+        // Check if chunk is nullptr before calling render()
+        if (!chunk)
+        {
+            std::cerr << "Warning: Nullptr chunk detected for key: " << key << std::endl;
+            continue;
+        }
+        chunk->render(m_renderer);
+    }
+    
+    // Render Entities
+    for (const auto& entity : m_entities.getEntities())
+    {
+        if (entity->cShape && entity->cTransform)
+        {
+            entity->cShape->draw(m_renderer, entity->cTransform->pos.x, entity->cTransform->pos.y);
+        }
+    }
+        
+    /*
     for (const auto& entity : m_entities.getEntities())
     {
         if (entity->cShape)
@@ -107,6 +138,7 @@ void Game::sRender(void)
             }
         }
     }
+     */
      
     
     SDL_RenderPresent(m_renderer);
@@ -114,7 +146,7 @@ void Game::sRender(void)
 
 void Game::sCollision(void)
 {
-    
+    /*
     for (const auto& entity : m_entities.getEntities("ball"))
     {
         if (entity->cTransform->pos.y + entity->cShape->radius >= m_windowSize.height || entity->cTransform->pos.y - entity->cShape->radius <= 0)
@@ -122,6 +154,7 @@ void Game::sCollision(void)
             entity->cTransform->velocity.y *= -1;
         }
     }
+    */
 }
 
 int Game::sGetRandomValue(int min, int max)
@@ -175,7 +208,7 @@ void Game::spawnPlayer(void)
     SDL_Color outlineColor = {0, 0, 0, 255};
     
     // Spawn position and Velocity & angle
-    entity->cTransform = std::make_shared<CTransform>(Vec2(40, m_windowSize.height / 2), Vec2(PLAYER_SPEED, PLAYER_SPEED), 0.0f);
+    entity->cTransform = std::make_shared<CTransform>(Vec2(m_windowSize.width / 2, m_windowSize.height / 2), Vec2(PLAYER_SPEED, PLAYER_SPEED), 0.0f);
     
     
     entity->cShape = std::make_shared<CShape>();
@@ -183,4 +216,9 @@ void Game::spawnPlayer(void)
 
     
     m_player = entity;
+    
+    if (!m_player)
+        {
+            std::cerr << "Error: m_player is nullptr after creation!" << std::endl;
+        }
 }

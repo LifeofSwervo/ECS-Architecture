@@ -12,4 +12,5 @@ class ChunkManager
 public:
     std::shared_ptr<Chunk> getChunk(Vec2 pos);
     void updateChunks(Vec2 playerPos);
+    std::unordered_map<std::string, std::shared_ptr<Chunk>>& getLoadedChunks();
 };
