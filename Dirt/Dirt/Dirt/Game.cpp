@@ -103,22 +103,26 @@ void Game::sRender(void)
     SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
     SDL_RenderClear(m_renderer);
     
+    Vec2 cameraPos = m_player->cTransform->pos;
+    
+    auto loadedChunks = m_chunkManager.getLoadedChunks();
+    std::cout << "Rendering " << loadedChunks.size() << " chunks" << std::endl;
+    
+    
+    
     // Render chunks
-    for (const auto& [key, chunk] : m_chunkManager.getLoadedChunks())
+    for (const auto& [key, chunk] : loadedChunks)
     {
-        // Check if chunk is nullptr before calling render()
-        if (!chunk)
+        if (chunk)
         {
-            std::cerr << "Warning: Nullptr chunk detected for key: " << key << std::endl;
-            continue;
+            chunk->render(m_renderer, cameraPos);
         }
-        chunk->render(m_renderer);
     }
     
     // Render Entities
     for (const auto& entity : m_entities.getEntities())
     {
-        if (entity->cShape && entity->cTransform)
+        if (entity->cShape)
         {
             entity->cShape->draw(m_renderer, entity->cTransform->pos.x, entity->cTransform->pos.y);
         }
@@ -139,6 +143,9 @@ void Game::sRender(void)
         }
     }
      */
+    // Force SDL to draw something
+    SDL_SetRenderDrawColor(m_renderer, 255, 0, 0, 255);
+    SDL_RenderDrawLine(m_renderer, 100, 100, 200, 200);
      
     
     SDL_RenderPresent(m_renderer);

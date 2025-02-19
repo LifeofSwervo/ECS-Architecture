@@ -38,8 +38,11 @@ std::shared_ptr<Chunk> ChunkManager::getChunk(Vec2 pos)
 void ChunkManager::updateChunks(Vec2 playerPos)
 {
     // Used to find what chunk player is in
-    int chunkX = (int)playerPos.x / CHUNK_SIZE;
-    int chunkY = (int)playerPos.y / CHUNK_SIZE;
+    int chunkX = (int)playerPos.x / (CHUNK_SIZE * 16);
+    int chunkY = (int)playerPos.y / (CHUNK_SIZE * 16);
+    
+    std::cout << "Player at: (" << playerPos.x << ", " << playerPos.y << "), Loading chunks..." << std::endl;
+
     
     // Interate over a 3x3 region of chunks, centered on the chunk with the player
     for (int dx = -1; dx <= 1; dx++)
@@ -47,7 +50,9 @@ void ChunkManager::updateChunks(Vec2 playerPos)
         for (int dy = -1; dy <= 1; dy++)
         {
             // Ensure if a chunk is not created, it's created
-            getChunk(Vec2(chunkX + dx, chunkY + dy)); // Load neighboring chunks
+            auto chunk = getChunk(Vec2(chunkX + dx, chunkY + dy));
+            std::cout << "Chunk at: (" << chunkX + dx << ", " << chunkY + dy << ") loaded." << std::endl;
+
         }
     }
 }

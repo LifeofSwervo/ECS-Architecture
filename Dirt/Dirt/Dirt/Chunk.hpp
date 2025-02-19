@@ -2,7 +2,7 @@
 #pragma once
 #include "Common.hpp"
 
-const int CHUNK_SIZE = 16;
+constexpr int CHUNK_SIZE = 16;
 
 class Chunk
 {
@@ -15,5 +15,5 @@ public:
     
     Chunk(Vec2 pos);
     void generate();
-    void render(SDL_Renderer* renderer);
+    void render(SDL_Renderer* renderer, Vec2 cameraPos);
 };

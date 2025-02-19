@@ -25,32 +25,48 @@ void Chunk::generate()
     }
 }
 
-void Chunk::render(SDL_Renderer *renderer)
+void Chunk::render(SDL_Renderer *renderer, Vec2 cameraPos)
 {
     const int CELL_SIZE = 16;
-    
+
+    // Convert chunk position to world coordinates (pixels)
+    int chunkWorldX = position.x * CHUNK_SIZE * CELL_SIZE;
+    int chunkWorldY = position.y * CHUNK_SIZE * CELL_SIZE;
+
     for (int y = 0; y < CHUNK_SIZE; y++)
     {
         for (int x = 0; x < CHUNK_SIZE; x++)
         {
             int cellType = cells[y * CHUNK_SIZE + x];
+
+            // Convert cell position relative to the chunk
+            int worldX = chunkWorldX + x * CELL_SIZE;
+            int worldY = chunkWorldY + y * CELL_SIZE;
+
+
+            // Convert world coordinates to screen space relative to the camera
+            int renderX = worldX - (int)cameraPos.x + (1280 / 2);
+            int renderY = worldY - (int)cameraPos.y + (720 / 2);
+
             
-            SDL_Rect cellRect = {
-                (int)(position.x * CHUNK_SIZE * CELL_SIZE + x * CELL_SIZE),
-                (int)(position.y * CHUNK_SIZE * CELL_SIZE + y * CELL_SIZE),
-                CELL_SIZE, CELL_SIZE
-            };
-            
+            std::cout << "Rendering chunk (" << position.x << ", " << position.y
+                      << ") at world (" << chunkWorldX << ", " << chunkWorldY
+                      << "), screen (" << renderX << ", " << renderY << ")\n";
+
+
+            SDL_Rect cellRect = { renderX, renderY, CELL_SIZE, CELL_SIZE };
+
             // Set colors for Cell Terrain Type
             if (cellType == 0) SDL_SetRenderDrawColor(renderer, 34, 139, 34, 255); // Grass
             else if (cellType == 1) SDL_SetRenderDrawColor(renderer, 139, 69, 19, 255); // Dirt
             else SDL_SetRenderDrawColor(renderer, 128, 128, 128, 255); // Stone
-            
+
             SDL_RenderFillRect(renderer, &cellRect);
-            
-            // Outline in black
-            SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+
+            // Outline in white
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_RenderDrawRect(renderer, &cellRect);
         }
     }
 }
+
