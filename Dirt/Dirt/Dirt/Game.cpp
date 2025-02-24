@@ -144,8 +144,6 @@ void Game::sRender(void)
     }
      */
     // Force SDL to draw something
-    SDL_SetRenderDrawColor(m_renderer, 255, 0, 0, 255);
-    SDL_RenderDrawLine(m_renderer, 100, 100, 200, 200);
      
     
     SDL_RenderPresent(m_renderer);
