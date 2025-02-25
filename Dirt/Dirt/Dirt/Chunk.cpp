@@ -18,10 +18,47 @@ Chunk::Chunk(Vec2 pos) : position(pos), cells(CHUNK_SIZE * CHUNK_SIZE, 0)
  */
 void Chunk::generate()
 {
-    // Placeholder Algorithm
-    for (auto& cell : cells)
+    // Set 2D perlin noise scale to 0.1
+    static FastNoiseLite noise;
+    noise.SetNoiseType(FastNoiseLite::NoiseType_OpenSimplex2);
+    noise.SetFrequency(0.1f);
+    
+    // Loop through chunk size
+    for (int y = 0; y < CHUNK_SIZE; y++)
     {
-        cell = rand() % 3;
+        for (int x = 0; x < CHUNK_SIZE; x++)
+        {
+            float worldX = (position.x * CHUNK_SIZE + x);
+            float worldY = (position.y * CHUNK_SIZE + y);
+            
+            // Remap noise value from [-1, 1] to [0, 1]
+            float noiseValue = (noise.GetNoise(worldX, worldY) + 1.0f) / 2.0f;
+            
+            // Map the noies value to the terrain type
+            int terrainType;
+            /*
+            if (noiseValue > 0.6f) //noiseValue > 0.6f
+            {
+                terrainType = 0; // Grass
+            } else if (noiseValue > 0.3f) //noiseValue > 0.3f
+            {
+                terrainType = 1; // Dirt
+            } else
+            {
+                terrainType = 2; // Stone
+            }
+             */
+            if (noiseValue < 0.9f)
+            {
+                terrainType = 0; // Grass
+            } else
+            {
+                terrainType = 2; // Stone
+            }
+            
+            // Store terrainType in cells
+            cells[y * CHUNK_SIZE + x] = terrainType;
+        }
     }
 }
 
@@ -47,11 +84,6 @@ void Chunk::render(SDL_Renderer *renderer, Vec2 cameraPos)
             // Convert world coordinates to screen space relative to the camera
             int renderX = worldX - (int)cameraPos.x + (1280 / 2);
             int renderY = worldY - (int)cameraPos.y + (720 / 2);
-
-            
-            std::cout << "Rendering chunk (" << position.x << ", " << position.y
-                      << ") at world (" << chunkWorldX << ", " << chunkWorldY
-                      << "), screen (" << renderX << ", " << renderY << ")\n";
 
 
             SDL_Rect cellRect = { renderX, renderY, CELL_SIZE, CELL_SIZE };

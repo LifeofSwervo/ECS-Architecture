@@ -12,6 +12,16 @@ std::shared_ptr<Chunk> ChunkManager::getChunk(Vec2 pos)
     // Create unique string (key) for Chunk pos
     std::string key = getChunkKey(pos);
     
+    auto [it, inserted] = chunks.emplace(key, nullptr);
+    if (inserted)
+    {
+        std::cout << "Generating new chunk at: " << key << std::endl;
+        it->second = std::make_shared<Chunk>(pos);
+    }
+    
+    return it->second;
+    
+    /*
     // Check if key exist in chunks map
     if (chunks.find(key) == chunks.end())
     {
@@ -19,12 +29,7 @@ std::shared_ptr<Chunk> ChunkManager::getChunk(Vec2 pos)
         // If it exist grab that key
         chunks[key] = std::make_shared<Chunk>(pos);
     }
-    
-    // Log error if chunk is somehow nullptr
-    if (!chunks[key])
-    {
-        std::cerr << "Error: getChunk() returned nullptr for key: " << key << std::endl;
-    }
+    */
     
     // If not create a new one
     return chunks[key];

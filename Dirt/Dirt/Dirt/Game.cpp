@@ -84,19 +84,24 @@ void Game::sMovement(void)
         {
             entity->cTransform->pos += entity->cTransform->velocity;
             
-            // If the entity is the player, update chunks
-            if (entity->tag() == "player")
-            {
-                m_chunkManager.updateChunks(entity->cTransform->pos);
-            }
         }
     }
+    
+    m_chunkManager.updateChunks(m_player->cTransform->pos);
 }
 
 void Game::sUserInput(void)
 {
+    const Uint8* keys = SDL_GetKeyboardState(NULL);
     
+    if (keys[SDL_SCANCODE_W]) m_player->cTransform->pos.y -= 5;
+    if (keys[SDL_SCANCODE_A]) m_player->cTransform->pos.x -= 5;
+    if (keys[SDL_SCANCODE_S]) m_player->cTransform->pos.y += 5;
+    if (keys[SDL_SCANCODE_D]) m_player->cTransform->pos.x += 5;
+    
+    m_chunkManager.updateChunks(m_player->cTransform->pos);
 }
+
 
 void Game::sRender(void)
 {
@@ -106,9 +111,6 @@ void Game::sRender(void)
     Vec2 cameraPos = m_player->cTransform->pos;
     
     auto loadedChunks = m_chunkManager.getLoadedChunks();
-    std::cout << "Rendering " << loadedChunks.size() << " chunks" << std::endl;
-    
-    
     
     // Render chunks
     for (const auto& [key, chunk] : loadedChunks)
@@ -137,7 +139,7 @@ void Game::sRender(void)
             {
                 entity->cShape->draw(m_renderer, entity->cTransform->pos.x, entity->cTransform->pos.y);
             } else if (entity->tag() == "player")
-            {
+           {
                 entity->cShape->draw(m_renderer, entity->cTransform->pos.x, entity->cTransform->pos.y);
             }
         }
@@ -219,11 +221,7 @@ void Game::spawnPlayer(void)
     entity->cShape = std::make_shared<CShape>();
     entity->cShape->setRectangle(20.0f, 100.0f, fillColor, outlineColor, 4.0f);
 
+    entity->cInput = std::make_shared<CInput>();
     
     m_player = entity;
-    
-    if (!m_player)
-        {
-            std::cerr << "Error: m_player is nullptr after creation!" << std::endl;
-        }
 }

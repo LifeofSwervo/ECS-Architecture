@@ -49,6 +49,7 @@
 		4499C66E2D5FE0B80091399C /* Chunk.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Chunk.hpp; sourceTree = "<group>"; };
 		4499C6702D5FE2420091399C /* ChunkManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChunkManager.cpp; sourceTree = "<group>"; };
 		4499C6712D5FE2420091399C /* ChunkManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ChunkManager.hpp; sourceTree = "<group>"; };
+		4499C6732D6C00440091399C /* FastNoiseLite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FastNoiseLite.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +100,7 @@
 				4499C65B2D5FD8820091399C /* Game.hpp */,
 				4499C6632D5FD8BB0091399C /* Vec2.cpp */,
 				4499C6642D5FD8BB0091399C /* Vec2.hpp */,
+				4499C6732D6C00440091399C /* FastNoiseLite.h */,
 			);
 			path = Dirt;
 			sourceTree = "<group>";
