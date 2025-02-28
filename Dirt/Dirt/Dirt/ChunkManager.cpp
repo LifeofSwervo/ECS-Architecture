@@ -15,7 +15,6 @@ std::shared_ptr<Chunk> ChunkManager::getChunk(Vec2 pos)
     auto [it, inserted] = chunks.emplace(key, nullptr);
     if (inserted)
     {
-        std::cout << "Generating new chunk at: " << key << std::endl;
         it->second = std::make_shared<Chunk>(pos);
     }
     
@@ -46,7 +45,6 @@ void ChunkManager::updateChunks(Vec2 playerPos)
     int chunkX = (int)playerPos.x / (CHUNK_SIZE * 16);
     int chunkY = (int)playerPos.y / (CHUNK_SIZE * 16);
     
-    std::cout << "Player at: (" << playerPos.x << ", " << playerPos.y << "), Loading chunks..." << std::endl;
 
     
     // Interate over a 3x3 region of chunks, centered on the chunk with the player
@@ -56,8 +54,6 @@ void ChunkManager::updateChunks(Vec2 playerPos)
         {
             // Ensure if a chunk is not created, it's created
             auto chunk = getChunk(Vec2(chunkX + dx, chunkY + dy));
-            std::cout << "Chunk at: (" << chunkX + dx << ", " << chunkY + dy << ") loaded." << std::endl;
-
         }
     }
 }
