@@ -21,7 +21,7 @@ void Chunk::generate()
     // Set 2D perlin noise scale to 0.1
     static FastNoiseLite noise;
     noise.SetNoiseType(FastNoiseLite::NoiseType_OpenSimplex2);
-    noise.SetFrequency(0.1f);
+    noise.SetFrequency(0.063f);
     
     // Loop through chunk size
     for (int y = 0; y < CHUNK_SIZE; y++)

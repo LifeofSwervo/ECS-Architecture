@@ -219,7 +219,7 @@ void Game::spawnPlayer(void)
     
     
     entity->cShape = std::make_shared<CShape>();
-    entity->cShape->setRectangle(20.0f, 100.0f, fillColor, outlineColor, 4.0f);
+    entity->cShape->setRectangle(16.0f, 16.0f, fillColor, outlineColor, 4.0f);
 
     entity->cInput = std::make_shared<CInput>();
     
