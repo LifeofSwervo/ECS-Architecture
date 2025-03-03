@@ -12,6 +12,7 @@ public:
     // Stores terrain type
     // (0 = grass, 1 = dirt, etc)
     std::vector<int> cells;
+    std::vector<std::pair<int, int>> treePositions;
     
     Chunk(Vec2 pos);
     void generate();
