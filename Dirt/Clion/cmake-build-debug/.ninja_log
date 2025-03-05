@@ -1,0 +1,21 @@
+# ninja log v6
+2	224	7629103714219182	build.ninja	9d524eb4f264a536
+20	246	7629103714969178	CMakeFiles/Clion.dir/Vec2.cpp.obj	4b5158509af46928
+34	493	7629103715109190	CMakeFiles/Clion.dir/lib/sdl2_gfx/1.0.4/include/SDL2_gfx/SDL2_framerate.c.obj	f9e5113871c36142
+40	535	7629103715169175	CMakeFiles/Clion.dir/lib/sdl2_gfx/1.0.4/include/SDL2_gfx/SDL2_imageFilter.c.obj	ba936e5464ff2211
+37	579	7629103715139188	CMakeFiles/Clion.dir/lib/sdl2_gfx/1.0.4/include/SDL2_gfx/SDL2_gfxPrimitives.c.obj	48bdac9f3097b9d2
+44	900	7629103715209208	CMakeFiles/Clion.dir/lib/sdl2_gfx/1.0.4/include/SDL2_gfx/SDL2_rotozoom.c.obj	abd413f2f733f816
+25	1191	7629103715019176	CMakeFiles/Clion.dir/Entity.cpp.obj	8c11737b6cbdfe5a
+18	1253	7629103714959174	CMakeFiles/Clion.dir/Chunk.cpp.obj	160469a76a6b437b
+23	1401	7629103714999175	CMakeFiles/Clion.dir/ChunkManager.cpp.obj	ee8473ea386b0841
+9	964	7629104236704538	CMakeFiles/Clion.dir/main.cpp.obj	aec321f593061c6c
+12	1049	7629104236734539	CMakeFiles/Clion.dir/EntityManager.cpp.obj	c6089dd2f7ca4bbe
+14	1186	7629104236744545	CMakeFiles/Clion.dir/Game.cpp.obj	52a900add347177f
+1186	1375	7629104248474541	Clion.exe	a9e7b02fe7062e2
+5	1071	7629107610953009	CMakeFiles/Clion.dir/main.cpp.obj	aec321f593061c6c
+8	1104	7629107610983013	CMakeFiles/Clion.dir/Chunk.cpp.obj	160469a76a6b437b
+10	1233	7629107611013008	CMakeFiles/Clion.dir/ChunkManager.cpp.obj	ee8473ea386b0841
+13	1312	7629107611033011	CMakeFiles/Clion.dir/Game.cpp.obj	52a900add347177f
+1312	1503	7629107624033022	Clion.exe	a9e7b02fe7062e2
+4	1310	7629107808278041	CMakeFiles/Clion.dir/Game.cpp.obj	52a900add347177f
+1310	1495	7629107821348043	Clion.exe	a9e7b02fe7062e2
