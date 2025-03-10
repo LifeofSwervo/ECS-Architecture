@@ -27,6 +27,9 @@ void Game::init(void)
     
     // Start with initial chunk
     
+    // Initialize camera at player position
+    cameraPos = m_player->cTransform->pos;
+    
 }
 
 void Game::run(void)
@@ -87,17 +90,38 @@ void Game::sMovement(void)
         }
     }
     
+    // Instantly snap to player if distance is too far
+    float maxDistance = 50.0f;
+    Vec2 diff = m_player->cTransform->pos - cameraPos;
+    
+    if (std::abs(diff.x) > maxDistance || std::abs(diff.y) > maxDistance)
+    {
+        cameraPos = m_player->cTransform->pos;
+    } else
+    {
+        // Smooth Camera Follow
+        float lerpFactor = 0.1f;
+        cameraPos.x += (m_player->cTransform->pos.x - cameraPos.x) * lerpFactor;
+        cameraPos.y += (m_player->cTransform->pos.y - cameraPos.y) * lerpFactor;
+    }
+    
     m_chunkManager.updateChunks(m_player->cTransform->pos);
+    
+    
+    
+    // Update chunks based on camera, not player movment;
+    m_chunkManager.updateChunks(cameraPos);
 }
 
 void Game::sUserInput(void)
 {
     const Uint8* keys = SDL_GetKeyboardState(NULL);
+    float PLAYER_SPEED = 1.5f;
     
-    if (keys[SDL_SCANCODE_W]) m_player->cTransform->pos.y -= 5;
-    if (keys[SDL_SCANCODE_A]) m_player->cTransform->pos.x -= 5;
-    if (keys[SDL_SCANCODE_S]) m_player->cTransform->pos.y += 5;
-    if (keys[SDL_SCANCODE_D]) m_player->cTransform->pos.x += 5;
+    if (keys[SDL_SCANCODE_W]) m_player->cTransform->pos.y -= PLAYER_SPEED;
+    if (keys[SDL_SCANCODE_A]) m_player->cTransform->pos.x -= PLAYER_SPEED;
+    if (keys[SDL_SCANCODE_S]) m_player->cTransform->pos.y += PLAYER_SPEED;
+    if (keys[SDL_SCANCODE_D]) m_player->cTransform->pos.x += PLAYER_SPEED;
     
     m_chunkManager.updateChunks(m_player->cTransform->pos);
 }
@@ -108,7 +132,7 @@ void Game::sRender(void)
     SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
     SDL_RenderClear(m_renderer);
     
-    Vec2 cameraPos = m_player->cTransform->pos;
+    //Vec2 cameraPos = m_player->cTransform->pos;
     
     auto loadedChunks = m_chunkManager.getLoadedChunks();
     
@@ -126,7 +150,7 @@ void Game::sRender(void)
     {
         if (entity->cShape)
         {
-            entity->cShape->draw(m_renderer, entity->cTransform->pos.x, entity->cTransform->pos.y);
+            entity->cShape->draw(m_renderer, entity->cTransform->pos.x - cameraPos.x + (1280 / 2), entity->cTransform->pos.y - cameraPos.y + (720 / 2));
         }
     }
         

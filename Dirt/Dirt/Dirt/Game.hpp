@@ -20,6 +20,7 @@ class Game
     int m_currentFrame = 0;
     bool m_running = true;
     Vec2 playerPosition;
+    Vec2 cameraPos;
     
     void init(const std::string & config);
 
