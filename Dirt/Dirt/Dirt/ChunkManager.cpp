@@ -42,8 +42,8 @@ std::shared_ptr<Chunk> ChunkManager::getChunk(Vec2 pos)
 void ChunkManager::updateChunks(Vec2 playerPos)
 {
     // Used to find what chunk player is in
-    int chunkX = (int)playerPos.x / (CHUNK_SIZE * 16);
-    int chunkY = (int)playerPos.y / (CHUNK_SIZE * 16);
+    int chunkX = (int)playerPos.x / (CHUNK_SIZE * CELL_SIZE);
+    int chunkY = (int)playerPos.y / (CHUNK_SIZE * CELL_SIZE);
     
 
     

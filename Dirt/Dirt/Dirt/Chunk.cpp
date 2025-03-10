@@ -55,7 +55,7 @@ void Chunk::generate()
 
 void Chunk::render(SDL_Renderer *renderer, Vec2 cameraPos)
 {
-    const int CELL_SIZE = 16;
+    //const int CELL_SIZE = 64;
 
     // Convert chunk position to world coordinates (pixels)
     int chunkWorldX = position.x * CHUNK_SIZE * CELL_SIZE;
